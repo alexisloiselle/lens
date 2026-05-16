@@ -125,7 +125,10 @@
     busy = true;
     updateButton();
     const reply = await engine.chat.completions.create({
-      messages: [{ role: 'user', content: inputEl.value }],
+      messages: [
+        { role: 'system', content: 'respond in under 128 tokens.' },
+        { role: 'user', content: inputEl.value },
+      ],
       temperature: 0,
       max_tokens: 128,
     });
